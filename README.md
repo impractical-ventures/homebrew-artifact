@@ -1,2 +1,2 @@
 # homebrew-artifact
-A CLI designed for elegantly support evaluation
+A CLI designed to elegantly support evaluation
