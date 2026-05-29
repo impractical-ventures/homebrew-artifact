@@ -1,15 +1,15 @@
 class Artifact < Formula
   desc "Package, deploy and run evaluators"
   homepage "https://github.com/impractical-ventures/artifact"
-  version "0.1.1"
+  version "0.1.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/impractical-ventures/artifact/releases/download/v0.1.1/artifact-aarch64-apple-darwin.tar.xz"
-      sha256 "fb754b9201cec292598ace971daf6c173d76c586cc71ff835f77f167fcb742a2"
+      url "https://github.com/impractical-ventures/homebrew-artifact/releases/download/v0.1.2/artifact-aarch64-apple-darwin.tar.xz"
+      sha256 "88ada73229975708ee7475e2eb56c65c1cb0714b084cadde0837bb9582318b97"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/impractical-ventures/artifact/releases/download/v0.1.1/artifact-x86_64-apple-darwin.tar.xz"
-      sha256 "09e079cd99403adcab20c6ced3c587c4fdb24c14535e09ec0301cee9398d9218"
+      url "https://github.com/impractical-ventures/homebrew-artifact/releases/download/v0.1.2/artifact-x86_64-apple-darwin.tar.xz"
+      sha256 "95613c80d46388f3c09588b0501d9d25c8766231c057411196c16e55a2c231f0"
     end
   end
   license "MIT"
