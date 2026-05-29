@@ -1,15 +1,15 @@
 class Artifact < Formula
   desc "Package, deploy and run evaluators"
   homepage "https://github.com/impractical-ventures/artifact"
-  version "0.1.2"
+  version "0.1.3"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/impractical-ventures/homebrew-artifact/releases/download/v0.1.2/artifact-aarch64-apple-darwin.tar.xz"
-      sha256 "88ada73229975708ee7475e2eb56c65c1cb0714b084cadde0837bb9582318b97"
+      url "https://github.com/impractical-ventures/homebrew-artifact/releases/download/v0.1.3/artifact-aarch64-apple-darwin.tar.xz"
+      sha256 "03168fd48a9cb031cd9f982ab4368dea66325779622999b1d8be5f7c13e1d6aa"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/impractical-ventures/homebrew-artifact/releases/download/v0.1.2/artifact-x86_64-apple-darwin.tar.xz"
-      sha256 "95613c80d46388f3c09588b0501d9d25c8766231c057411196c16e55a2c231f0"
+      url "https://github.com/impractical-ventures/homebrew-artifact/releases/download/v0.1.3/artifact-x86_64-apple-darwin.tar.xz"
+      sha256 "983d0a471a6e310f082a553cc5657ea4cffb6689b6b816cb8cb21c13e4fa6157"
     end
   end
   license "MIT"
@@ -53,7 +53,12 @@ class Artifact < Formula
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
   def post_install
-    generate_completions_from_executable(bin/"artifact", "completions", shells: [:bash, :zsh, :fish])
+    (bash_completion/"artifact").write(
+      Utils.safe_popen_read(bin/"artifact", "completions", "bash"))
+    (zsh_completion/"_artifact").write(
+      Utils.safe_popen_read(bin/"artifact", "completions", "zsh"))
+    (fish_completion/"artifact.fish").write(
+      Utils.safe_popen_read(bin/"artifact", "completions", "fish"))
   end
 
 end
